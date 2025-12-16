@@ -14,7 +14,9 @@ def encode(text):
     Encodes the given text into Morse code.
     Words are separated by a pipe (|) and letters by a space.
     """
-    pass  # YOUR CODE HERE
+    words = text.split()  # boşluklara göre kelimelere ayırır
+    encoded_words = [encode_word(w) for w in words]
+    return "|".join(encoded_words)
 
 
 def encode_word(word):
@@ -22,7 +24,11 @@ def encode_word(word):
     Encodes a single word into Morse code.
     Letters are separated by a space.
     """
-    pass  # YOUR CODE HERE
+    letters = []
+    for ch in word.upper():
+        if ch in MORSE:          # sadece A-Z
+            letters.append(MORSE[ch])
+    return " ".join(letters)
 
 
 if __name__ == "__main__":
